@@ -15,9 +15,11 @@ export default function Card({ cardData }) {
       <p className="font-bold text-pink-700">{instructions}</p>
       <div className="w-full flex flex-col items-center gap-2">
         <div className="w-full bg-pink-900 flex items-center justify-around rounded p-1">
-          <span className="font-bold text-white ">prepTimeMinutes: {prepTimeMinutes}</span>
+          <span className="font-bold text-white ">
+            prepTimeMinutes: {prepTimeMinutes}
+          </span>
           <div className="flex items-center justify-center gap-1">
-            <FaEye className="text-white"/>
+            <FaEye className="text-white" />
             <span className="font-bold text-white ">rating: {rating}</span>
           </div>
         </div>
