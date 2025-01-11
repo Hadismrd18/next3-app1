@@ -1,9 +1,20 @@
 import React from "react";
 import Link from "next/link";
 import { FaEye } from "react-icons/fa6";
+
+export async function generateMetadata({ params }) {
+  const response = await fetch(`https://dummyjson.com/posts/${params.id}`);
+  const post = await response.json();
+ 
+  return {
+    title: post.title,
+    description: post.body,
+  };
+}
 export default async function page({ params }) {
   const userResponse = await fetch(`https://dummyjson.com/posts/${params.id}`);
   const userData = await userResponse.json();
+  console.log(userData)
   const { id, title, body, views, userId } = userData;
   return (
     <div className="w-full h-full flex items-center justify-center">

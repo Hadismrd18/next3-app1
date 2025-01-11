@@ -1,5 +1,14 @@
 import React from "react";
 import Link from "next/link";
+export async function generateMetadata({ params }) {
+  const response = await  fetch(`https://dummyjson.com/users/${params.id}`);
+  const post = await response.json();
+
+  return {
+    title: post.firstName,
+    description: post.lastName,
+  };
+}    
 export default async function page({ params }) {
   const userResponse = await fetch(`https://dummyjson.com/users/${params.id}`);
   const userData = await userResponse.json();

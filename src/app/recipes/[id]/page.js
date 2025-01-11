@@ -1,6 +1,17 @@
 import React from "react";
 import Link from "next/link";
 import { FaEye } from "react-icons/fa6";
+
+export async function generateMetadata({ params }) {
+  const response = await fetch(`https://dummyjson.com/recipes/${params.id}`);
+  const post = await response.json();
+
+  return {
+    title: post.name,
+    description: post.instructions,
+  };
+}
+
 export default async function page({ params }) {
   const userResponse = await fetch(
     `https://dummyjson.com/recipes/${params.id}`
@@ -26,7 +37,7 @@ export default async function page({ params }) {
             </div>
           </div>
           <Link
-            href={`/recipes/${id}`}
+            href={`/recipes`}
             className="w-full text-center bg-purple-900 text-amber-50 rounded px-3 py-1"
           >
             Back to recipes
