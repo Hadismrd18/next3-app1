@@ -2,6 +2,12 @@
 import Card from "@/components/UsersCard";
 import Navbar from "@/components/Navbar";
 import React, { Suspense } from "react";
+
+export const metadata = {
+  title: "this is the users title",
+  description: "this is the users description",
+};
+
 export default async function Page() {
   const response = await fetch("https://dummyjson.com/users");
   const data = await response.json();

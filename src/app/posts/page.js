@@ -2,6 +2,13 @@
 import Card from "@/components/PostsCard";
 import Navbar from "@/components/Navbar";
 import React, { Suspense } from "react";
+
+export const metadata = {
+  title: "this is the posts title",
+  description: "this is the posts description",
+};
+
+
 export default async function Page() {
   const response = await fetch("https://dummyjson.com/posts");
   const data = await response.json();
