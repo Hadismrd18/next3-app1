@@ -1,11 +1,11 @@
 // Card.jsx
 "use client"; // Designating Card as a client component
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { FaEye } from "react-icons/fa6";
-export default function Card({ cardData }) {
+export default async function Card({ cardData }) {
   const { id, name, instructions, prepTimeMinutes, rating } = cardData;
-
+  await new Promise((resolve) => setTimeout(resolve, 3000));
   return (
     <div
       key={id}
