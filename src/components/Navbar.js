@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 export default function Navbar() {
   return (
-    <div className="w-full bg-amber-200  h-[100px] flex items-center shadow-sm">
+    <div className="z-50 fixed top-0 left-0 right-0 w-full bg-amber-200  h-[100px] flex items-center shadow-sm">
       <ul className="w-full flex items-center justify-around">
         <Link
           href="/"
@@ -27,6 +27,12 @@ export default function Navbar() {
           className="bg-fuchsia-950 text-amber-50 font-medium py-2 px-5 rounded hover:bg-fuchsia-800 transition-all duration-200"
         >
           <li>Recipes</li>
+        </Link>
+        <Link
+          href="/admin"
+          className="bg-fuchsia-950 text-amber-50 font-medium py-2 px-5 rounded hover:bg-fuchsia-800 transition-all duration-200"
+        >
+          <li>Admin</li>
         </Link>
       </ul>
     </div>
