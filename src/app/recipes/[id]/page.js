@@ -3,7 +3,8 @@ import Link from "next/link";
 import { FaEye } from "react-icons/fa6";
 
 export async function generateMetadata({ params }) {
-  const response = await fetch(`https://dummyjson.com/recipes/${params.id}`);
+  const { id } = await params;
+  const response = await fetch(`http://localhost:3000/api/recipes/${id}`);
   const post = await response.json();
 
   return {
@@ -11,17 +12,19 @@ export async function generateMetadata({ params }) {
     description: post.instructions,
   };
 }
-
+// implement find by id functionality!!!
 export default async function page({ params }) {
+  const { id } = await params;
   const userResponse = await fetch(
-    `https://dummyjson.com/recipes/${params.id}`
+    `http://localhost:3000/api/recipes/${id}`
   );
   const userData = await userResponse.json();
-  const { id, name, instructions, prepTimeMinutes, rating } = userData;
+  console.log(userData)
+  const { _id, name, instructions, prepMinutes, rating } = userData;
   return (
     <div className="w-full h-full flex items-center justify-center">
       <div
-        key={id}
+        key={_id}
         className="w-[70%] p-4 hover:bg-amber-300 hover:scale-105 transition-all duration-200 bg-amber-200 rounded py-6 flex flex-col items-center justify-between"
       >
         <h1 className="font-semibold text-fuchsia-900">{name}</h1>
@@ -29,7 +32,7 @@ export default async function page({ params }) {
         <div className="w-full flex flex-col items-center gap-2">
           <div className="w-full bg-pink-900 flex items-center justify-around rounded p-1">
             <span className="font-bold text-white ">
-              prepTimeMinutes: {prepTimeMinutes}
+              prep minutes: {prepMinutes}
             </span>
             <div className="flex items-center justify-center gap-1">
               <FaEye className="text-white" />
